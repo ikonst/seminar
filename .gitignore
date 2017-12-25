@@ -1,0 +1,6 @@
+client/CMakeFiles
+client/cmake-build-*
+*.pyc
+.idea/workspace.xml
+client/.idea/workspace.xml
+server/.idea/workspace.xml

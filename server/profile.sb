@@ -1,0 +1,27 @@
+(version 1)
+; (allow default)
+; (deny network*)
+; (debug allow)
+; (allow process*)
+; (deny default)
+; (trace "trace.sb")
+
+(allow file-ioctl (path "/dev/dtracehelper"))
+(allow file-read*
+  (path "/")
+  (path "/dev")
+  (path "/dev/dtracehelper")
+  (path "/dev/urandom")
+  (subpath "/dev/fd")
+  (subpath "/usr/lib")
+  (subpath "/Library/Frameworks/Python.framework")
+  (subpath "/System/Library/Frameworks")
+  (subpath "/usr/share/locale")
+  (subpath (param "VIRTUAL_ENV"))
+)
+
+(allow process-exec* (path (string-append (param "VIRTUAL_ENV") "/bin/python3.6")))
+
+(allow file-write-data (path "/dev/dtracehelper"))
+(allow sysctl-read (sysctl-name "hw.pagesize_compat"))
+(allow sysctl-read (sysctl-name "kern.usrstack64"))
